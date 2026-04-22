@@ -1,0 +1,17 @@
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        if len(nums) == 0:
+            # print("ret -- ")
+            return [[]]
+
+        # print("recursing still", nums)
+        perms = self.permute(nums[1:])
+        # print("perms", perms)
+        res = []
+        for p in perms:
+            for i in range(len(p) + 1):
+                p_copy = p.copy()
+                p_copy.insert(i, nums[0])
+                res.append(p_copy)
+        # print("res in first", res)
+        return res
